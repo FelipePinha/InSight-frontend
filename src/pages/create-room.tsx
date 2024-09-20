@@ -12,15 +12,15 @@ export function CreateRoom() {
 						htmlFor="question"
 						className="text-zinc-500 text-sm font-medium"
 					>
-						Faça uma pergunta, um pedido de ajuda, uma receita de bolo...
+						Faça uma pergunta, peça uma opinião, uma receita de bolo...
 					</label>
 				</div>
 				<div className="relative w-full">
 					<div className="w-full px-4 py-2  pb-12 h-48 resize-none bg-zinc-50 border-2 rounded-lg placeholder-zinc-400 outline-none text-sm border-sky-400">
 						<textarea
-							className="w-full h-[90%] resize-none outline-none"
+							className="w-full h-[90%] resize-none outline-none bg-zinc-50"
 							id="question"
-							placeholder="o que você deseja perguntar?"
+							placeholder="O que você deseja perguntar?"
 						/>
 					</div>
 					<div className="absolute flex justify-between items-center w-full">
@@ -28,7 +28,9 @@ export function CreateRoom() {
 							<Lock className="size-5" />
 							<p>Esta pergunta é anônima</p>
 						</div>
-						<Button className="absolute bottom-3 right-3">Enviar</Button>
+						<Button type="submit" className="absolute bottom-3 right-3">
+							Enviar
+						</Button>
 					</div>
 				</div>
 			</form>
