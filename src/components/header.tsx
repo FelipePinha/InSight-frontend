@@ -7,7 +7,7 @@ export function Header() {
 	const { shortId } = useParams();
 
 	return (
-		<header className="h-20 px-20 flex justify-between items-center">
+		<header className="h-20 px-5 md:px-20 flex flex-col mb-28 sm:mb-0 sm:flex-row justify-between items-center">
 			<div className="flex items-center gap-3">
 				<img className="w-28" src={Logo} alt="insight logos" />
 				<h1 className="font-bold text-3xl">
@@ -17,11 +17,11 @@ export function Header() {
 
 			{shortId && (
 				<div className="flex items-center gap-3">
-					<Button variant="secondary">
+					<Button size="sm" variant="secondary">
 						<Copy className="size-5" />
 						{shortId}
 					</Button>
-					<Button>
+					<Button size="sm">
 						<Plus className="size-5" />
 						Nova sala
 					</Button>
