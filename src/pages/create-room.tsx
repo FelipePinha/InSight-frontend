@@ -1,11 +1,43 @@
+import { z } from "zod";
 import Chat from "../assets/chat.svg";
 import { Button } from "../components/ui/button";
 import { Lock } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate } from "react-router-dom";
+import { createRoom } from "../http/create-room";
+
+const createRoomForm = z.object({
+	question: z.string().min(1, "Você precisa preencher este campo!"),
+});
+
+type CreateRoomForm = z.infer<typeof createRoomForm>;
 
 export function CreateRoom() {
+	const navigate = useNavigate();
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+		reset,
+	} = useForm<CreateRoomForm>({
+		resolver: zodResolver(createRoomForm),
+	});
+
+	async function handleCreateRoom(formData: CreateRoomForm) {
+		const { room } = await createRoom(formData.question);
+
+		reset();
+		navigate(`/room/${room.shortId}`);
+	}
+
 	return (
 		<div className="flex items-center w-full">
-			<form className="flex flex-col items-center w-full space-y-8">
+			<form
+				onSubmit={handleSubmit(handleCreateRoom)}
+				className="flex flex-col items-center w-full space-y-8"
+			>
 				<div className="flex flex-col items-center space-y-3">
 					<img src={Chat} alt="icone de chat" />
 					<label
@@ -16,11 +48,13 @@ export function CreateRoom() {
 					</label>
 				</div>
 				<div className="relative w-full">
+					<span className="text-red-600">{errors.question?.message}</span>
 					<div className="w-full px-4 py-2  pb-12 h-48 resize-none bg-zinc-50 border-2 rounded-lg placeholder-zinc-400 outline-none text-sm border-sky-400">
 						<textarea
 							className="w-full h-[90%] resize-none outline-none bg-zinc-50"
 							id="question"
 							placeholder="O que você deseja perguntar?"
+							{...register("question")}
 						/>
 					</div>
 					<div className="absolute flex justify-between items-center w-full">
