@@ -48,8 +48,9 @@ export function CreateRoom() {
 					</label>
 				</div>
 				<div className="relative w-full">
-					<span className="text-red-600">{errors.question?.message}</span>
-					<div className="w-full px-4 py-2  pb-12 h-48 resize-none bg-zinc-50 border-2 rounded-lg placeholder-zinc-400 outline-none text-sm border-sky-400">
+					<div
+						className={`w-full px-4 py-2  pb-12 h-48 resize-none bg-zinc-50 border-2 rounded-lg placeholder-zinc-400 outline-none text-sm ${errors.question?.message ? "border border-red-600" : "border-sky-400"}`}
+					>
 						<textarea
 							className="w-full h-[90%] resize-none outline-none bg-zinc-50"
 							id="question"
