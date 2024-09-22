@@ -47,7 +47,7 @@ export function CreateAnswerField({
 	return (
 		<form
 			onSubmit={handleSubmit(handleCreateAnswer)}
-			className="w-full md:w-2/3 space-y-3"
+			className="w-full md:w-5/6 space-y-3"
 		>
 			<label className="text-zinc-500" htmlFor="answer">
 				Escreva uma resposta

@@ -14,13 +14,12 @@ interface AnswerResponseList {
 
 export function Room() {
 	const { shortId } = useParams();
+	const [isTextareaOpen, setIsTextareaOpen] = useState(false);
 
 	const { data } = useQuery({
 		queryFn: () => enterRoom(shortId),
 		queryKey: ["room"],
 	});
-
-	const [isTextareaOpen, setIsTextareaOpen] = useState(false);
 
 	function openTextarea() {
 		setIsTextareaOpen(true);
@@ -32,7 +31,7 @@ export function Room() {
 
 	return (
 		<div className="flex flex-col items-center p-5 space-y-10">
-			<div className="space-y-3 w-full flex flex-col items-start md:w-2/3">
+			<div className="space-y-3 w-full flex flex-col sm:flex-row justify-between items-start sm:items-baseline md:w-5/6">
 				<h2 className="font-medium text-2xl">{data?.room.question}</h2>
 
 				{!isTextareaOpen && (
@@ -49,7 +48,7 @@ export function Room() {
 				/>
 			)}
 
-			<div className="space-y-3 w-full flex flex-col items-start md:w-2/3">
+			<div className="space-y-3 w-full flex flex-col items-start md:w-5/6">
 				{data?.room.answers.map((answer: AnswerResponseList) => {
 					return (
 						<div
