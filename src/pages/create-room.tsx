@@ -33,7 +33,7 @@ export function CreateRoom() {
 	}
 
 	return (
-		<div className="flex items-center w-full">
+		<div className="flex items-center w-full px-3">
 			<form
 				onSubmit={handleSubmit(handleCreateRoom)}
 				className="flex flex-col items-center w-full space-y-8"
@@ -42,17 +42,17 @@ export function CreateRoom() {
 					<img src={Chat} alt="icone de chat" />
 					<label
 						htmlFor="question"
-						className="text-zinc-500 text-sm font-medium"
+						className="text-zinc-500 text-sm font-medium text-center"
 					>
 						Faça uma pergunta, peça uma opinião, uma receita de bolo...
 					</label>
 				</div>
 				<div className="relative w-full">
 					<div
-						className={`w-full px-4 py-2  pb-12 h-48 resize-none bg-zinc-50 border-2 rounded-lg placeholder-zinc-400 outline-none text-sm ${errors.question?.message ? "border border-red-600" : "border-sky-400"}`}
+						className={`w-full px-4 py-2  pb-12 h-56 resize-none bg-zinc-50 border-2 rounded-lg placeholder-zinc-400 outline-none text-sm ${errors.question?.message ? "border border-red-600" : "border-sky-400"}`}
 					>
 						<textarea
-							className="w-full h-[90%] resize-none outline-none bg-zinc-50"
+							className="w-full h-[90%] resize-none outline-none bg-zinc-50 text-lg md:text-base"
 							id="question"
 							placeholder="O que você deseja perguntar?"
 							{...register("question")}

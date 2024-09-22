@@ -13,7 +13,7 @@ export function Header() {
 	}
 
 	return (
-		<header className="h-20 px-5 md:px-20 flex flex-col mb-28 sm:mb-0 sm:flex-row justify-between items-center">
+		<header className="h-20 px-5 md:px-20 flex flex-col mb-24 sm:mb-0 sm:flex-row justify-between items-center">
 			<Link to="/" className="flex items-center">
 				<img className="w-28" src={Logo} alt="insight logos" />
 				<h1 className="font-bold text-3xl">
