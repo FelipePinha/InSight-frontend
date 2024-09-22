@@ -1,10 +1,10 @@
 import { useState } from "react";
 import UserIcon from "../assets/user-icon.svg";
 import { Button } from "../components/ui/button";
-import { Textarea } from "../components/ui/textarea";
 import { useQuery } from "@tanstack/react-query";
 import { enterRoom } from "../http/enter-room";
 import { useParams } from "react-router-dom";
+import { CreateAnswerField } from "../components/create-answer-field";
 
 interface AnswerResponseList {
 	id: string;
@@ -43,15 +43,10 @@ export function Room() {
 			</div>
 
 			{isTextareaOpen && (
-				<div className="w-full md:w-1/2 space-y-3">
-					<label className="text-zinc-500" htmlFor="answer">
-						Escreva uma resposta
-					</label>
-					<Textarea id="answer" className="w-full" />
-					<Button onClick={closeTextarea} variant="normal">
-						Cancelar
-					</Button>
-				</div>
+				<CreateAnswerField
+					roomId={data?.room.id}
+					closeTextarea={closeTextarea}
+				/>
 			)}
 
 			<div className="space-y-3 w-full flex flex-col items-start md:w-2/3">
